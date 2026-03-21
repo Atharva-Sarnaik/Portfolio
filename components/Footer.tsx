@@ -1,4 +1,3 @@
-import { Github, Linkedin, Twitter, Phone } from "lucide-react";
 
 export default function Footer() {
   return (

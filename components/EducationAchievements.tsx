@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,7 +16,7 @@ export default function EducationAchievements() {
 
     const isDesktop = window.innerWidth > 768;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Early reveal: headings slide in from sides
       gsap.from(".edu-heading", {
         opacity: 0,
@@ -88,14 +88,14 @@ export default function EducationAchievements() {
       className="edu-section relative min-h-screen bg-[#f5f3ee] border-t border-[#d4d0c8] overflow-hidden flex flex-col justify-center"
     >
       {/* Vertical Progress Line */}
-      <div 
+      <div
         ref={progressLineRef}
         className="edu-progress-line fixed left-0 top-0 w-[3px] h-screen bg-[#2563EB] origin-top scale-y-0 z-50 pointer-events-none hidden md:block"
       />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-20 w-full py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
-          
+
           {/* LEFT COLUMN - EDUCATION */}
           <div className="flex flex-col gap-10">
             <div>
@@ -114,9 +114,9 @@ export default function EducationAchievements() {
               <div className="edu-year text-blue-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4">
                 2023 — 2027
               </div>
-              
+
               <div className="edu-accent w-[32px] h-[2px] bg-blue-600 mb-5" />
-              
+
               <h3 className="edu-degree text-[clamp(18px,2.5vw,34px)] font-[800] text-[#1a1a1a] leading-[1.1] tracking-[-0.5px] mb-2">
                 B.Tech in Artificial Intelligence and Data Science
               </h3>

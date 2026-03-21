@@ -6,26 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SKILLS = [
-  "Python",
-  "NumPy",
-  "Pandas",
-  "Scikit-learn",
-  "Generative AI",
-  "NLP",
-  "RAG",
-  "API Integration",
-  "TypeScript",
-  "JavaScript",
-  "CSS",
-  "Git",
-];
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const progressLineRef = useRef<HTMLDivElement>(null);
-  
+
   const text = "I am a B.Tech undergraduate in Artificial Intelligence and Data Science (2023–2027), focused on building practical AI-powered applications. While I am currently learning Machine Learning fundamentals, I have hands-on experience with Generative AI, NLP, and real-world AI integrations through projects.";
   const words = text.split(" ");
 
@@ -43,7 +29,7 @@ export default function About() {
     wordEls.forEach((el) => {
       const y = Math.round(el.getBoundingClientRect().top);
       if (currentY === null) currentY = y;
-      
+
       // If Y position changes significantly, it's a new line
       if (Math.abs(y - currentY) > 8) {
         if (currentLine.length) lines.push([...currentLine]);
@@ -85,7 +71,7 @@ export default function About() {
         lineWords,
         {
           // Step 1: Subtle warm highlight (ink spreading)
-          color: "#6b6860", 
+          color: "#6b6860",
           duration: 0.2,
           stagger: {
             each: 0.1,
@@ -122,7 +108,7 @@ export default function About() {
       className="relative min-h-screen bg-[#f5f3ee] border-t border-[#d4d0c8] flex flex-col pt-32 md:pt-0 md:justify-center overflow-hidden"
     >
       {/* Progress Indicator Line */}
-      <div 
+      <div
         ref={progressLineRef}
         className="about-progress-line fixed left-0 top-0 w-[3px] h-screen bg-[#2563EB] origin-top scale-y-0 z-50 pointer-events-none hidden md:block"
       />

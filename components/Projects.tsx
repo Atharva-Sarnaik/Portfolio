@@ -55,7 +55,7 @@ export default function Projects() {
   const detailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Create ScrollTriggers for each project block
       PROJECTS.forEach((_, i) => {
         ScrollTrigger.create({

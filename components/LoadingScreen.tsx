@@ -75,8 +75,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       className="loading-screen"
       style={{ clipPath: "inset(0 0 0% 0)" }}
     >
-      <span 
-        ref={counterRef} 
+      <span
+        ref={counterRef}
         className="loading-counter absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         {count}%

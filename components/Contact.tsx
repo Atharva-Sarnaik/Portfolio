@@ -112,7 +112,7 @@ export default function Contact() {
 
     try {
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-      
+
       if (!accessKey || accessKey === "your_access_key_here") {
         alert("Please set NEXT_PUBLIC_WEB3FORMS_KEY in your .env.local file to activate email forwarding.");
         setSubmitStatus("error");
@@ -271,13 +271,12 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting || submitStatus === "success"}
-                className={`w-full py-3.5 rounded-lg text-[16px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 transform ${
-                  submitStatus === "success"
+                className={`w-full py-3.5 rounded-lg text-[16px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 transform ${submitStatus === "success"
                     ? "bg-green-600 text-white"
                     : submitStatus === "error"
-                    ? "bg-red-600 text-white"
-                    : "bg-[#1a1a1a] text-[#f5f3ee] hover:bg-[#2563EB] active:scale-[0.98]"
-                } disabled:opacity-80 disabled:cursor-not-allowed`}
+                      ? "bg-red-600 text-white"
+                      : "bg-[#1a1a1a] text-[#f5f3ee] hover:bg-[#2563EB] active:scale-[0.98]"
+                  } disabled:opacity-80 disabled:cursor-not-allowed`}
               >
                 {isSubmitting ? (
                   "Sending..."
