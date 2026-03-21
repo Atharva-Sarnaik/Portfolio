@@ -9,22 +9,17 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Atharva Sarnaik — AI Application Developer",
-  description:
-    "Building AI-powered applications with Generative AI and real-world use cases. B.Tech AI & Data Science undergraduate portfolio.",
-  keywords: [
-    "Atharva Sarnaik",
-    "AI Developer",
-    "Generative AI",
-    "Machine Learning",
-    "NLP",
-    "Portfolio",
-  ],
+  title: 'Atharva Sarnaik — Generative AI Application Developer',
+  description: 'Portfolio of Atharva Sarnaik. Building intelligent AI-powered apps exploring Machine Learning & Generative AI.',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
-    title: "Atharva Sarnaik — AI Application Developer",
-    description:
-      "Building AI-powered applications with Generative AI and real-world use cases.",
-    type: "website",
+    title: 'Atharva Sarnaik — Generative AI Application Developer',
+    description: 'Building intelligent AI-powered apps exploring Machine Learning & Generative AI.',
+    type: 'website',
   },
 };
 

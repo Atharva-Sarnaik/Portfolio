@@ -39,8 +39,8 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${scrolled
-            ? "py-4 bg-[#f5f3ee]/90 backdrop-blur-md border-[#d4d0c8] shadow-sm"
-            : "py-6 bg-transparent border-transparent"
+          ? "py-4 bg-[#f5f3ee]/90 backdrop-blur-md border-[#d4d0c8] shadow-sm"
+          : "py-6 bg-transparent border-transparent"
           }`}
         style={{
           opacity: isVisible ? 1 : 0,

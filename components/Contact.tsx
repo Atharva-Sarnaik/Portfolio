@@ -272,10 +272,10 @@ export default function Contact() {
                 type="submit"
                 disabled={isSubmitting || submitStatus === "success"}
                 className={`w-full py-3.5 rounded-lg text-[16px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 transform ${submitStatus === "success"
-                    ? "bg-green-600 text-white"
-                    : submitStatus === "error"
-                      ? "bg-red-600 text-white"
-                      : "bg-[#1a1a1a] text-[#f5f3ee] hover:bg-[#2563EB] active:scale-[0.98]"
+                  ? "bg-green-600 text-white"
+                  : submitStatus === "error"
+                    ? "bg-red-600 text-white"
+                    : "bg-[#1a1a1a] text-[#f5f3ee] hover:bg-[#2563EB] active:scale-[0.98]"
                   } disabled:opacity-80 disabled:cursor-not-allowed`}
               >
                 {isSubmitting ? (

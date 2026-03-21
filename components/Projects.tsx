@@ -92,7 +92,7 @@ export default function Projects() {
     if (activeProject === displayProject) return;
 
     const tl = gsap.timeline();
-    
+
     tl.to(detailsRef.current, {
       opacity: 0,
       y: -10,
@@ -164,7 +164,7 @@ export default function Projects() {
       className="relative w-full bg-[#f5f3ee]"
     >
       <div className="flex flex-col md:flex-row w-full">
-        
+
         {/* TOP/LEFT PANEL - Sticky on Mobile & Desktop */}
         <div className="w-full h-[45vh] md:w-[52%] md:h-screen sticky top-0 border-b md:border-b-0 md:border-r border-[#d4d0c8] bg-[#f5f3ee] z-30">
           <div className="h-full flex flex-col p-6 lg:p-16 relative">
@@ -181,7 +181,7 @@ export default function Projects() {
             </div>
 
             {/* Element 1: Active Project Details (Desktop & Mobile) */}
-            <div 
+            <div
               ref={detailsRef}
               className="absolute bottom-6 left-6 right-6 lg:bottom-16 lg:left-16 lg:w-[380px] lg:right-auto"
             >
@@ -205,11 +205,10 @@ export default function Projects() {
             {/* Element 2: Project Navigation (Desktop) */}
             <div className="hidden md:flex absolute lg:bottom-16 lg:right-16 flex-col gap-1 items-end">
               {PROJECTS.map((project, i) => (
-                <span 
+                <span
                   key={project.number}
-                  className={`text-[12px] uppercase tracking-wider transition-colors duration-300 ${
-                    activeProject === i ? "text-[#1a1a1a] font-bold" : "text-[#c0bdb7]"
-                  }`}
+                  className={`text-[12px] uppercase tracking-wider transition-colors duration-300 ${activeProject === i ? "text-[#1a1a1a] font-bold" : "text-[#c0bdb7]"
+                    }`}
                 >
                   {project.name}
                 </span>
@@ -235,7 +234,7 @@ export default function Projects() {
                   alt={project.name}
                   className={`project-img-${i} w-full h-full object-cover will-change-transform`}
                 />
-                
+
                 {/* Visual Overlay */}
                 <div className="absolute inset-0 bg-black/35 transition-opacity duration-500 group-hover:opacity-40 z-10" />
 
