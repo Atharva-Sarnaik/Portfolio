@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Atharva Sarnaik - Developer Portfolio
 
-## Getting Started
+A premium, interactive developer portfolio built to showcase personal projects, education, and technical skills through cinematic GSAP scroll animations and fully responsive, immersive design.
 
-First, run the development server:
+## Features
+- **Immersive Interactive Elements**: Custom neural network background canvas and a bespoke magnetic cursor interaction system.
+- **Cinematic Scroll Animations**: Powered by GSAP ScrollTrigger for precise element scrubbing, sticky layouts, and line-by-line text reveals.
+- **Fully Responsive**: Crafted with an adaptive mobile approach so animations are equally seamless and fluid on phone screens.
+- **Modern Architecture**: Built on Next.js App Router, styled flawlessly with Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
+- **Framework:** Next.js (React 18)
+- **Styling:** Tailwind CSS
+- **Animations:** GSAP (ScrollTrigger, Timelines)
+- **Language:** TypeScript
+- **Icons:** React Icons
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 🚀 Deployment Guide (GitHub to Vercel)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Follow these steps to deploy your portfolio live to the web for free using Vercel.
 
-## Learn More
+## Step 1: Push to GitHub Server
 
-To learn more about Next.js, take a look at the following resources:
+1. **Create a new Empty Repository on GitHub:**
+   - Log into GitHub, click the `+` icon in the top right, and select **New repository**.
+   - Name it something like `portfolio-website`.
+   - Leave it **Public**.
+   - **IMPORTANT:** Do NOT check "Add a README file" or ".gitignore". Leave the repo completely empty.
+   - Click **Create repository**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Open Git Bash or Terminal in your project folder:**
+   Make sure your terminal is opened inside `c:\Users\Atharva Sarnaik\Desktop\Porfolio website`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Initialize and Push your code:**
+   Run these sequence of commands one by one to securely link your folder to the GitHub server:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit of Portfolio"
+   git branch -M main
+   
+   # REPLACE the URL below with your actual repository URL!
+   git remote add origin https://github.com/Atharva-Sarnaik/portfolio-website.git
+   
+   git push -u origin main
+   ```
+   *(If it asks for authentication, sign in to your GitHub account via the browser prompt).*
 
-## Deploy on Vercel
+## Step 2: Deploy to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Vercel is the creator of Next.js and provides the fastest, most reliable deployment process for it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Log in to Vercel:** Go to [vercel.com](https://vercel.com/) and sign up/log in using your **GitHub** account.
+2. **Import Project:** Click the **Add New...** button and select **Project**.
+3. **Select Repository:** You will see a list of your GitHub repositories. Click the **Import** button next to your new `portfolio-website` repository.
+4. **Configure Project:**
+   - **Framework Preset**: Vercel will automatically detect `Next.js`. Leave everything exactly as is.
+   - **Environment Variables**: If you have an `.env.local` file (e.g., for contact form API keys or passwords), open the **Environment Variables** dropdown and copy/paste exactly what is inside your `.env.local` file here.
+5. **Deploy:** Click the large **Deploy** button.
+
+### You're Live! 🌍
+Vercel will build your website (takes ~1-2 minutes). Once finished, you will be redirected to a dashboard containing your live web address (e.g., `portfolio-website-atharva.vercel.app`). 
+
+You can also add a custom domain (like `atharvasarnaik.com`) in the "Domains" setting in your Vercel project dashboard at any point!

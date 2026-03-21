@@ -1,0 +1,59 @@
+# ATHARVA SARNAIK - Resume Source Data
+Source: Portfolio Website (March 2026)
+
+## PERSONAL INFORMATION
+Name: Atharva Sarnaik
+Title: AI & ML Application Developer
+Location: Kolhapur, India
+Email: sarnaikatharva13@gmail.com
+Phone: +91 7722027367
+GitHub: https://github.com/Atharva-Sarnaik
+LinkedIn: https://www.linkedin.com/in/atharva-sarnaik-b9a2b627b/
+Twitter: https://x.com/atharva_sarnaik
+
+## SUMMARY / BIO
+Building intelligent AI-powered apps, exploring Machine Learning & Generative AI. 
+I have a strong background in combining cutting-edge AI models with scalable application development. Specialized in bridging the gap between raw data and impactful, user-centric software solutions—from deep learning prototypes to full-stack applications.
+
+## SKILLS
+- AI/ML Core: PyTorch, TensorFlow, Scikit-learn, OpenCV, Hugging Face, LLMs.
+- Backend Engineering: Python, Node.js, FastAPI, Next.js API, PostgreSQL, MongoDB.
+- Frontend Engineering: React, Next.js, TypeScript, Tailwind CSS, GSAP.
+- Tools & Cloud: Git, Docker, AWS, Vercel, Firebase.
+
+## PROJECTS
+
+1. KoeScroll (2025)
+Technologies: Gemini 2.5 Flash, Web & Android, Multimodal AI
+- Bridges visual storytelling and audio drama by using multimodal AI to perform manga PDFs natively with distinct character voices.
+- Features Real-time AI Dubbing (Hero/Villain/Narrator configs) and a custom Geometric Sorting Algorithm for intelligent script extraction.
+- Supports Cross-Platform Sync to pause on Web and resume on Mobile, complete with a Voice Lab and local offline imports.
+URL: https://github.com/Atharva-Sarnaik/Koe-Scroll
+
+2. Virtual Try-On (2025)
+Technologies: Computer Vision, AI Inference, Web App Architecture
+- Built an AI-powered virtual try-on application enabling users to preview clothing items using image-based inference.
+- Features real-time rendering and seamless frontend AI pipeline integration.
+- Integrated backend services for secure user authentication and image storage, delivering an end-to-end interactive fashion tech experience.
+URL: https://github.com/Atharva-Sarnaik/Virtual-Try-On-System
+
+3. Sentiment Analysis (2024)
+Technologies: Transformer Models, Analytics, Automation
+- Engineered an AI-powered analyzer using Transformer Models for sentiment and topic classification.
+- Successfully classified and analyzed across over 500 pieces of complex feedback.
+- Automated the generation of instructor-wise reports and interactive dashboards, reducing manual data processing time by an estimated 80%.
+URL: https://github.com/Atharva-Sarnaik/Sentiment-Analysis/tree/main
+
+## EDUCATION
+B.Tech in Artificial Intelligence and Data Science
+Government College of Engineering, Kolhapur
+Duration: 2023 — 2027
+Details: Expected Graduation: 2027. Focusing on core AI concepts, Data Structures, Machine Learning fundamentals and scalable system design.
+
+## ACHIEVEMENTS & CERTIFICATIONS
+
+1. Hackathon 2025: Special Appreciation
+Details: Received a Token of Appreciation for innovative implementation of the AI Feedback Analysis System.
+
+2. Oracle Generative AI Certification (2024)
+Details: Completed Oracle GenAI Professional certification covering foundational concepts of LLMs, prompt engineering, and enterprise AI use cases.
