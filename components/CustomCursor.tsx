@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -12,101 +11,63 @@ export default function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    // Check for touch device
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
     let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+    let dotX = 0, dotY = 0;
     let ringX = 0, ringY = 0;
     let rafId: number;
 
-    const onMouseMove = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
-    const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.85;
-      cursorY += (mouseY - cursorY) * 0.85;
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
+    const tick = () => {
+      dotX += (mouseX - dotX) * 0.9;
+      dotY += (mouseY - dotY) * 0.9;
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
 
-      if (dot) {
-        dot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-      }
-      if (ring) {
-        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      }
-      rafId = requestAnimationFrame(animate);
+      dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+
+      rafId = requestAnimationFrame(tick);
     };
 
-    const onMouseEnterHoverable = () => {
-      dot.style.width = "60px";
-      dot.style.height = "60px";
-      dot.style.background = "rgba(37, 99, 235, 0.15)";
-      dot.style.mixBlendMode = "difference";
-      ring.style.width = "60px";
-      ring.style.height = "60px";
-      ring.style.borderColor = "#2563EB";
-    };
-
-    const onMouseLeaveHoverable = () => {
-      dot.style.width = "8px";
-      dot.style.height = "8px";
-      dot.style.background = "#2563EB";
-      dot.style.mixBlendMode = "normal";
-      ring.style.width = "40px";
-      ring.style.height = "40px";
-      ring.style.borderColor = "rgba(37, 99, 235, 0.5)";
-    };
-
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    rafId = requestAnimationFrame(animate);
-
-    const hoverables = document.querySelectorAll(
-      'a, button, [data-cursor="hover"], .project-card, .social-icon, .magnetic-wrap'
-    );
-    hoverables.forEach((el) => {
-      el.addEventListener("mouseenter", onMouseEnterHoverable);
-      el.addEventListener("mouseleave", onMouseLeaveHoverable);
-    });
-
-    // Re-attach on DOM changes
-    const observer = new MutationObserver(() => {
-      const newHoverables = document.querySelectorAll(
-        'a, button, [data-cursor="hover"], .project-card, .social-icon, .magnetic-wrap'
-      );
-      newHoverables.forEach((el) => {
-        el.addEventListener("mouseenter", onMouseEnterHoverable);
-        el.addEventListener("mouseleave", onMouseLeaveHoverable);
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("mousemove", onMove, { passive: true });
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(rafId);
-      observer.disconnect();
-      hoverables.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterHoverable);
-        el.removeEventListener("mouseleave", onMouseLeaveHoverable);
-      });
     };
   }, []);
 
   return (
     <>
-      <div
-        ref={dotRef}
-        className="cursor-dot"
-        style={{ backgroundColor: "#1a1a1a" }}
-      />
-      <div
-        ref={ringRef}
-        className="cursor-ring"
-        style={{ borderColor: "rgba(26, 26, 26, 0.3)" }}
-      />
+      <div ref={dotRef} style={{
+        position: 'fixed',
+        top: -4,
+        left: -4,
+        width: 8,
+        height: 8,
+        borderRadius: '50%',
+        background: '#1a1a1a',
+        pointerEvents: 'none',
+        zIndex: 99999,
+        willChange: 'transform',
+      }} />
+      <div ref={ringRef} style={{
+        position: 'fixed',
+        top: -16,
+        left: -16,
+        width: 32,
+        height: 32,
+        borderRadius: '50%',
+        border: '1.5px solid rgba(26,26,26,0.4)',
+        pointerEvents: 'none',
+        zIndex: 99998,
+        willChange: 'transform',
+      }} />
     </>
   );
 }

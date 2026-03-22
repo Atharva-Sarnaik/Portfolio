@@ -23,17 +23,15 @@ export default function MagneticButton({
     // Skip on touch devices
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    const xTo = gsap.quickTo(el, "x", { duration: 0.6, ease: "elastic.out(1, 0.3)" });
-    const yTo = gsap.quickTo(el, "y", { duration: 0.6, ease: "elastic.out(1, 0.3)" });
+    const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3.out" });
+    const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3.out" });
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = (e.clientX - centerX) * strength;
-      const deltaY = (e.clientY - centerY) * strength;
-      xTo(deltaX);
-      yTo(deltaY);
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      xTo(x * 0.35);
+      yTo(y * 0.35);
     };
 
     const onMouseLeave = () => {
@@ -41,7 +39,7 @@ export default function MagneticButton({
       yTo(0);
     };
 
-    el.addEventListener("mousemove", onMouseMove);
+    el.addEventListener("mousemove", onMouseMove, { passive: true });
     el.addEventListener("mouseleave", onMouseLeave);
 
     return () => {

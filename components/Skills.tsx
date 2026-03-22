@@ -37,30 +37,21 @@ function SkillItem({
   slug: string; 
   color: string; 
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const defaultSrc = `https://cdn.simpleicons.org/${slug}/888888`;
-  const hoverSrc = `https://cdn.simpleicons.org/${slug}/${color}`;
+  const srcUrl = `https://cdn.simpleicons.org/${slug}/${color}`;
 
   return (
     <div 
       className="skill-item flex items-center gap-[10px] cursor-default group py-2 px-4 flex-shrink-0"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative w-7 h-7 flex items-center justify-center overflow-visible pointer-events-none">
         <img
-          src={isHovered ? hoverSrc : defaultSrc}
-          data-hover={hoverSrc}
+          src={srcUrl}
           alt={name}
-          className={`skill-icon w-7 h-7 object-contain transition-all duration-300 pointer-events-none ${isHovered ? 'grayscale-0 brightness-100' : 'grayscale brightness-[0.6]'}`}
-          style={{ 
-            filter: isHovered ? 'none' : 'grayscale(1) brightness(0.6)',
-            transition: 'filter 0.3s ease'
-          }}
+          className="skill-icon w-7 h-7 object-contain transition-all duration-300 pointer-events-none grayscale brightness-[0.6] group-hover:grayscale-0 group-hover:brightness-100"
         />
       </div>
       <span 
-        className={`skill-name text-[14px] font-medium tracking-tight transition-colors duration-300 ${isHovered ? 'text-[#1a1a1a]' : 'text-[#888888]'}`}
+        className="skill-name text-[14px] font-medium tracking-tight transition-colors duration-300 text-[#888888] group-hover:text-[#1a1a1a]"
       >
         {name}
       </span>
