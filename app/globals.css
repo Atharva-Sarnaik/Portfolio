@@ -178,6 +178,11 @@ canvas {
   border-color: var(--electric-blue);
 }
 
+.projects-cursor-active,
+.projects-cursor-active * {
+  cursor: none !important;
+}
+
 /* ===== Loading Screen ===== */
 .loading-screen {
   position: fixed;
@@ -242,32 +247,38 @@ canvas {
 
 /* ===== Marquee ===== */
 @keyframes marquee-left {
-  from { transform: translateX(0) }
-  to { transform: translateX(-50%) }
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(-50%)
+  }
 }
 
 @keyframes marquee-right {
-  from { transform: translateX(-50%) }
-  to { transform: translateX(0) }
+  from {
+    transform: translateX(-50%)
+  }
+
+  to {
+    transform: translateX(0)
+  }
 }
 
 .marquee-row {
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(
-    to right, 
-    transparent 0%, 
-    black 10%, 
-    black 90%, 
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right, 
-    transparent 0%, 
-    black 10%, 
-    black 90%, 
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
 }
 
 .marquee-track {
@@ -317,22 +328,18 @@ canvas {
 .project-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 10, 0.95) 0%,
-    rgba(10, 10, 10, 0.6) 40%,
-    rgba(37, 99, 235, 0.05) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(10, 10, 10, 0.95) 0%,
+      rgba(10, 10, 10, 0.6) 40%,
+      rgba(37, 99, 235, 0.05) 100%);
   transition: background 0.4s ease;
 }
 
 .project-card:hover .project-card-overlay {
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 10, 0.95) 0%,
-    rgba(10, 10, 10, 0.5) 40%,
-    rgba(37, 99, 235, 0.12) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(10, 10, 10, 0.95) 0%,
+      rgba(10, 10, 10, 0.5) 40%,
+      rgba(37, 99, 235, 0.12) 100%);
 }
 
 /* ===== Social Icon Hover ===== */
@@ -380,6 +387,7 @@ canvas {
 
 /* ===== Responsive: Hide cursor on mobile ===== */
 @media (max-width: 767px) {
+
   .cursor-dot,
   .cursor-ring {
     display: none !important;
