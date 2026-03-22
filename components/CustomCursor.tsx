@@ -15,16 +15,29 @@ export default function CustomCursor() {
     // Check for touch device
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    const xDot = gsap.quickTo(dot, "left", { duration: 0.15, ease: "power3.out" });
-    const yDot = gsap.quickTo(dot, "top", { duration: 0.15, ease: "power3.out" });
-    const xRing = gsap.quickTo(ring, "left", { duration: 0.5, ease: "power3.out" });
-    const yRing = gsap.quickTo(ring, "top", { duration: 0.5, ease: "power3.out" });
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let ringX = 0, ringY = 0;
+    let rafId: number;
 
     const onMouseMove = (e: MouseEvent) => {
-      xDot(e.clientX);
-      yDot(e.clientY);
-      xRing(e.clientX);
-      yRing(e.clientY);
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    const animate = () => {
+      cursorX += (mouseX - cursorX) * 0.85;
+      cursorY += (mouseY - cursorY) * 0.85;
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+
+      if (dot) {
+        dot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      }
+      if (ring) {
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      }
+      rafId = requestAnimationFrame(animate);
     };
 
     const onMouseEnterHoverable = () => {
@@ -47,7 +60,8 @@ export default function CustomCursor() {
       ring.style.borderColor = "rgba(37, 99, 235, 0.5)";
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    rafId = requestAnimationFrame(animate);
 
     const hoverables = document.querySelectorAll(
       'a, button, [data-cursor="hover"], .project-card, .social-icon, .magnetic-wrap'
@@ -72,6 +86,7 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(rafId);
       observer.disconnect();
       hoverables.forEach((el) => {
         el.removeEventListener("mouseenter", onMouseEnterHoverable);

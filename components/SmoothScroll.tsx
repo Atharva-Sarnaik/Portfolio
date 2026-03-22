@@ -18,7 +18,8 @@ export default function SmoothScroll({
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
+      smoothWheel: true,
+      wheelMultiplier: 0.8,
     });
 
     lenisRef.current = lenis;
@@ -30,6 +31,7 @@ export default function SmoothScroll({
     });
 
     gsap.ticker.lagSmoothing(0);
+    ScrollTrigger.refresh();
 
     return () => {
       lenis.destroy();

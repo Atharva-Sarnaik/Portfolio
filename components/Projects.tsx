@@ -115,20 +115,11 @@ export default function Projects() {
     const rightPanel = document.querySelector(".projects-right-panel");
     if (!cursor || !rightPanel) return;
 
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
     const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    const animateCursor = () => {
-      cursorX += (mouseX - cursorX) * 0.12;
-      cursorY += (mouseY - cursorY) * 0.12;
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-      requestAnimationFrame(animateCursor);
+      if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      }
     };
 
     const onMouseEnter = () => {
@@ -143,16 +134,14 @@ export default function Projects() {
       cursor.style.transform = "translate(-50%, -50%) scale(0.5)";
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mousemove", onMouseMove, { passive: true });
     rightPanel.addEventListener("mouseenter", onMouseEnter);
     rightPanel.addEventListener("mouseleave", onMouseLeave);
-    const animId = requestAnimationFrame(animateCursor);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mousemove", onMouseMove);
       rightPanel.removeEventListener("mouseenter", onMouseEnter);
       rightPanel.removeEventListener("mouseleave", onMouseLeave);
-      cancelAnimationFrame(animId);
       document.body.style.cursor = "default";
     };
   }, []);

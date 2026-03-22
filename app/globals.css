@@ -84,6 +84,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+section {
+  will-change: auto;
+  contain: layout style;
+}
+
+canvas {
+  will-change: transform;
+}
+
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 6px;
@@ -138,6 +147,7 @@ body {
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.3s, height 0.3s, background 0.3s;
+  will-change: transform;
 }
 
 .cursor-ring {
@@ -152,6 +162,7 @@ body {
   z-index: 9998;
   transform: translate(-50%, -50%);
   transition: width 0.3s, height 0.3s, border-color 0.3s;
+  will-change: transform;
 }
 
 .cursor-hover .cursor-dot {
@@ -264,6 +275,8 @@ body {
   width: max-content;
   gap: 48px;
   padding: 16px 0;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .marquee-track.left {

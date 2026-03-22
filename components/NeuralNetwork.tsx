@@ -101,7 +101,11 @@ export default function NeuralNetwork() {
       mouseRef.current = { x, y, v: velocity * 0.002 };
     };
 
+    let animating = true;
+    let rafId: number;
+
     const animate = () => {
+      if (!animating) return;
       time += 0.016;
       const W = canvas.offsetWidth;
       const H = canvas.offsetHeight;
@@ -113,7 +117,7 @@ export default function NeuralNetwork() {
 
       // 1. Draw Connections Base Lines
       ctx.strokeStyle = "rgba(160, 155, 148, 0.15)";
-      ctx.lineWidth = 0.8;
+      ctx.lineWidth = 0.5;
       connections.forEach(conn => {
         ctx.beginPath();
         ctx.moveTo(conn.source.x, conn.source.y);
@@ -148,7 +152,7 @@ export default function NeuralNetwork() {
           // Dot
           ctx.fillStyle = "rgba(37, 99, 235, 0.8)";
           ctx.beginPath();
-          ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+          ctx.arc(px, py, 2, 0, Math.PI * 2);
           ctx.fill();
         }
       });
@@ -193,18 +197,30 @@ export default function NeuralNetwork() {
       // Decay velocity factor
       mouseRef.current.v *= 0.95;
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        animating = entry.isIntersecting;
+        if (animating) {
+          rafId = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
     setup();
+    observer.observe(canvas);
     window.addEventListener("resize", setup);
-    window.addEventListener("mousemove", handleMouseMove);
-    const anim = requestAnimationFrame(animate);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
+      animating = false;
+      observer.disconnect();
       window.removeEventListener("resize", setup);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(anim);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
