@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 
 const NAV_LINKS = [
   { label: "About", href: "#about", script: "about me" },
-  { label: "Projects", href: "#projects", script: "my work" },
+  { label: "Projects", href: "#projects-section", script: "my work" },
   { label: "Skills", href: "#skills", script: "my stack" },
   { label: "Get in touch", href: "#contact", script: "let's talk" },
 ];
@@ -240,7 +240,7 @@ export default function Hero() {
               GitHub ↗
             </a>
             <a
-              href="https://www.linkedin.com/in/atharvasarnaik/"
+              href="https://www.linkedin.com/in/atharva-sarnaik-b9a2b627b/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[12px] text-[#9ca3af] hover:text-[#1a1a1a] transition-colors duration-300 tracking-wide"
