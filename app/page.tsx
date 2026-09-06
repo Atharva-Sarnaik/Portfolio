@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -22,8 +21,6 @@ export default function Home() {
 
   return (
     <>
-      <CustomCursor />
-
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <SmoothScroll>
