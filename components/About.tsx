@@ -12,7 +12,7 @@ export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const progressLineRef = useRef<HTMLDivElement>(null);
 
-  const text = "I'm a B.Tech undergraduate in Artificial Intelligence and Data Science (2023–2027), building AI-assisted software and automation tools. I'm currently transitioning into the Salesforce ecosystem — developing foundational Salesforce Administrator knowledge, with the goal of specializing in Agentforce (AI agent development on Salesforce). Alongside this, I have basic, coursework-level understanding of Machine Learning and Deep Learning, and hands-on experience applying Generative AI, NLP, and real-world AI integrations through my projects.";
+  const text = "B.Tech undergraduate in Artificial Intelligence and Data Science (2023–2027), building AI-powered applications and exploring the Salesforce ecosystem. I have basic, coursework-level grounding in Machine Learning, and hands-on experience with Generative AI, NLP, and real-world AI integrations through my projects. I'm now expanding into Salesforce, with a longer-term interest in Agentforce and AI-driven CRM workflows.";
   const words = text.split(" ");
 
   useEffect(() => {
