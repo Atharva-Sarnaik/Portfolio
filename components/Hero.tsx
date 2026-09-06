@@ -222,7 +222,7 @@ export default function Hero() {
           style={{ bottom: "48px", right: "48px" }}
         >
           <a
-            href="/Atharva_Sarnaik_Resume.pdf"
+            href="/Atharva_Sarnaik_Resume.pdf?v=1.1"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#1a1a1a] text-[#f5f3ee] px-6 py-2.5 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#2563EB] transition-colors duration-300 flex items-center gap-2"
