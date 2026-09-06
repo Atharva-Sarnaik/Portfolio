@@ -113,6 +113,64 @@ export default function Projects() {
     );
   }, [activeProject, displayProject]);
 
+  // Single coordinate tracking effect
+  useEffect(() => {
+    const urls = [
+      'https://github.com/Atharva-Sarnaik/Koe-Scroll',
+      'https://github.com/Atharva-Sarnaik/Virtual-Try-On-System',
+      'https://github.com/Atharva-Sarnaik/Sentiment-Analysis/tree/main',
+      'https://github.com/Atharva-Sarnaik/ai-manga-dubbing',
+    ];
+
+    const move = (e: MouseEvent) => {
+      const el = document.getElementById('gh-cursor');
+      if (!el) return;
+
+      const section = document.getElementById('projects-section');
+      if (!section) return;
+
+      const r = section.getBoundingClientRect();
+
+      const inRightColumn = e.clientX > window.innerWidth * 0.52;
+      const inSectionVertically = e.clientY > r.top && e.clientY < r.bottom;
+      const over = inRightColumn && inSectionVertically;
+
+      if (over) {
+        el.style.transform = `translate(${e.clientX - 44}px, ${e.clientY - 44}px)`;
+        document.documentElement.classList.add('projects-cursor-active');
+        document.dispatchEvent(new Event('projects-cursor-enter'));
+      } else {
+        el.style.transform = 'translate(-999px, -999px)';
+        document.documentElement.classList.remove('projects-cursor-active');
+        document.dispatchEvent(new Event('projects-cursor-leave'));
+      }
+    };
+
+    const click = (e: MouseEvent) => {
+      const section = document.getElementById('projects-section');
+      if (!section) return;
+
+      const r = section.getBoundingClientRect();
+      const inRightColumn = e.clientX > window.innerWidth * 0.52;
+      const inSectionVertically = e.clientY > r.top && e.clientY < r.bottom;
+
+      if (inRightColumn && inSectionVertically) {
+        window.open(urls[activeProjectRef.current], '_blank');
+      }
+    };
+
+    document.addEventListener('mousemove', move, { passive: true });
+    document.addEventListener('click', click);
+
+    return () => {
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('click', click);
+      document.documentElement.classList.remove('projects-cursor-active');
+      const el = document.getElementById('gh-cursor');
+      if (el) el.style.transform = 'translate(-999px, -999px)';
+      document.dispatchEvent(new Event('projects-cursor-leave'));
+    };
+  }, []);
   return (
     <section
       ref={sectionRef}
@@ -176,6 +234,7 @@ export default function Projects() {
         {/* RIGHT PANEL - Scrollable Blocks */}
         <div
           className="projects-right-panel w-full md:w-[48%]"
+          style={{ cursor: 'none' }}
         >
           {PROJECTS.map((project, i) => (
             <a

@@ -402,3 +402,8 @@ canvas {
   opacity: 1;
   transform: translate(-50%, -50%) translateY(0);
 }
+
+.projects-cursor-active,
+.projects-cursor-active * {
+  cursor: none !important;
+}
